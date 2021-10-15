@@ -53,7 +53,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="num0" max="32767" attributes="0"/>
-                              <Component id="potencia" pref="59" max="32767" attributes="0"/>
+                              <Component id="invertir" pref="59" max="32767" attributes="0"/>
                               <Component id="num2" max="32767" attributes="0"/>
                               <Component id="num5" alignment="0" max="32767" attributes="0"/>
                               <Component id="num8" max="32767" attributes="0"/>
@@ -63,7 +63,7 @@
                               <Component id="decimal" max="32767" attributes="0"/>
                               <Component id="num6" max="32767" attributes="0"/>
                               <Component id="num3" max="32767" attributes="0"/>
-                              <Component id="raiz" pref="59" max="32767" attributes="0"/>
+                              <Component id="potencia" pref="59" max="32767" attributes="0"/>
                               <Component id="num9" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -88,8 +88,8 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="clear" pref="59" max="32767" attributes="0"/>
+                      <Component id="invertir" max="32767" attributes="0"/>
                       <Component id="potencia" max="32767" attributes="0"/>
-                      <Component id="raiz" max="32767" attributes="0"/>
                       <Component id="division" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -146,6 +146,19 @@
             <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="clearMouseExited"/>
           </Events>
         </Component>
+        <Component class="javax.swing.JButton" name="invertir">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="+/-"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="invertirMouseClicked"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="invertirMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="invertirMouseExited"/>
+          </Events>
+        </Component>
         <Component class="javax.swing.JButton" name="potencia">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -157,19 +170,6 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="potenciaMouseClicked"/>
             <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="potenciaMouseEntered"/>
             <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="potenciaMouseExited"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="raiz">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="&#x221a;"/>
-          </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="raizMouseClicked"/>
-            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="raizMouseEntered"/>
-            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="raizMouseExited"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="division">

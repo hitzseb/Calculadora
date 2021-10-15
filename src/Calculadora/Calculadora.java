@@ -30,8 +30,8 @@ public class Calculadora extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         campo = new javax.swing.JTextField();
         clear = new javax.swing.JButton();
+        invertir = new javax.swing.JButton();
         potencia = new javax.swing.JButton();
-        raiz = new javax.swing.JButton();
         division = new javax.swing.JButton();
         num1 = new javax.swing.JButton();
         num2 = new javax.swing.JButton();
@@ -68,6 +68,20 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
 
+        invertir.setBackground(new java.awt.Color(255, 255, 255));
+        invertir.setText("+/-");
+        invertir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                invertirMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                invertirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                invertirMouseExited(evt);
+            }
+        });
+
         potencia.setBackground(new java.awt.Color(255, 255, 255));
         potencia.setText("^");
         potencia.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -79,20 +93,6 @@ public class Calculadora extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 potenciaMouseExited(evt);
-            }
-        });
-
-        raiz.setBackground(new java.awt.Color(255, 255, 255));
-        raiz.setText("√");
-        raiz.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                raizMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                raizMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                raizMouseExited(evt);
             }
         });
 
@@ -352,7 +352,7 @@ public class Calculadora extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(num0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(potencia, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+                            .addComponent(invertir, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
                             .addComponent(num2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(num5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(num8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -361,7 +361,7 @@ public class Calculadora extends javax.swing.JFrame {
                             .addComponent(decimal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(num6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(num3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(raiz, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+                            .addComponent(potencia, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
                             .addComponent(num9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -380,8 +380,8 @@ public class Calculadora extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(clear, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+                    .addComponent(invertir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(potencia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(raiz, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(division, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -468,13 +468,14 @@ public class Calculadora extends javax.swing.JFrame {
         campo.setText(campo.getText()+"0");
     }//GEN-LAST:event_num0MouseClicked
 
+    private void invertirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invertirMouseClicked
+        double n = Double.parseDouble(campo.getText());
+        campo.setText(Double.toString(n*-1));
+    }//GEN-LAST:event_invertirMouseClicked
+
     private void potenciaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_potenciaMouseClicked
         campo.setText(campo.getText()+"^");
     }//GEN-LAST:event_potenciaMouseClicked
-
-    private void raizMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_raizMouseClicked
-        campo.setText(campo.getText()+"√");
-    }//GEN-LAST:event_raizMouseClicked
 
     private void divisionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_divisionMouseClicked
         campo.setText(campo.getText()+"/");
@@ -511,17 +512,6 @@ public class Calculadora extends javax.swing.JFrame {
             }catch(Exception e){
                 campo.setText("Synthax error");
             }
-        }
-        
-        if(s.contains("√")){
-            try{
-                String a = s.substring(0, s.indexOf("√"));
-                String b = s.substring(s.indexOf("√")+1, s.length());
-                double resultado = Math.pow(Double.parseDouble(a), 1/(Double.parseDouble(b)));
-                campo.setText(Double.toString(resultado));
-            }catch(Exception e){
-                campo.setText("Synthax error");
-            }              
         }
         
         if(s.contains("/")){
@@ -589,6 +579,14 @@ public class Calculadora extends javax.swing.JFrame {
         clear.setBackground(new java.awt.Color(255, 255, 255));
     }//GEN-LAST:event_clearMouseExited
 
+    private void invertirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invertirMouseEntered
+        invertir.setBackground(new java.awt.Color(240, 240, 240));
+    }//GEN-LAST:event_invertirMouseEntered
+
+    private void invertirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invertirMouseExited
+        invertir.setBackground(new java.awt.Color(255, 255, 255));
+    }//GEN-LAST:event_invertirMouseExited
+
     private void potenciaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_potenciaMouseEntered
         potencia.setBackground(new java.awt.Color(240, 240, 240));
     }//GEN-LAST:event_potenciaMouseEntered
@@ -596,14 +594,6 @@ public class Calculadora extends javax.swing.JFrame {
     private void potenciaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_potenciaMouseExited
         potencia.setBackground(new java.awt.Color(255, 255, 255));
     }//GEN-LAST:event_potenciaMouseExited
-
-    private void raizMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_raizMouseEntered
-        raiz.setBackground(new java.awt.Color(240, 240, 240));
-    }//GEN-LAST:event_raizMouseEntered
-
-    private void raizMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_raizMouseExited
-        raiz.setBackground(new java.awt.Color(255, 255, 255));
-    }//GEN-LAST:event_raizMouseExited
 
     private void divisionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_divisionMouseEntered
         division.setBackground(new java.awt.Color(240, 240, 240));
@@ -745,6 +735,7 @@ public class Calculadora extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        double n;
         double numero1;
         double numero2;
         String operacion;
@@ -764,6 +755,7 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JButton decimal;
     private javax.swing.JButton division;
     private javax.swing.JButton igualdad;
+    private javax.swing.JButton invertir;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton multiplicacion;
     private javax.swing.JButton num0;
@@ -777,7 +769,6 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JButton num8;
     private javax.swing.JButton num9;
     private javax.swing.JButton potencia;
-    private javax.swing.JButton raiz;
     private javax.swing.JButton resta;
     private javax.swing.JButton resto;
     private javax.swing.JButton suma;
